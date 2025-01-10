@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { HttpHeaders } from '@angular/common/http';
 /**
  * Servicio de autenticación para manejar operaciones relacionadas con el inicio de sesión,
  * registro y cierre de sesión de los usuarios.
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   /** URL base de la API de autenticación */
-  private apiUrl = 'http://localhost:5220/api/Auth';
+  private apiUrl = 'http://localhost:5296/api/Auth';
 
   /**
    * Constructor que inyecta el cliente HTTP para realizar solicitudes a la API.
@@ -24,8 +24,9 @@ export class AuthService {
    * @param formData - Formulario con las credenciales del usuario (email y contraseña).
    * @returns Observable con la respuesta de la API.
    */
-  login(formData: FormData): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, formData);
+  login(data: { Email: string; Password: string }): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.apiUrl}/login`, data, { headers });
   }
 
   /**

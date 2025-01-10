@@ -49,13 +49,14 @@ export class LoginComponent {
       return;
     }
 
-    // Crear un objeto FormData para enviar los datos al backend.
-    const formData = new FormData();
-    formData.append('Email', this.Email);
-    formData.append('Password', this.Password);
+    // Crear el objeto de datos en formato JSON.
+    const loginData = {
+      Email: this.Email,
+      Password: this.Password,
+    };
 
     // Llamar al servicio de autenticación.
-    this.authService.login(formData).subscribe({
+    this.authService.login(loginData).subscribe({
       /**
        * Manejo del caso exitoso.
        * @param response Respuesta del backend con el token de autenticación.
@@ -74,9 +75,9 @@ export class LoginComponent {
 
         // Redirigir según el rol del usuario.
         if (isAdmin) {
-          this.router.navigate(['/home']); // Página de inicio para administradores.
+          this.router.navigate(['/post']); // Página de inicio para administradores.
         } else {
-          this.router.navigate(['/home']); // Página de inicio para clientes.
+          this.router.navigate(['/post']); // Página de inicio para clientes.
         }
       },
       /**
@@ -88,7 +89,7 @@ export class LoginComponent {
 
         // Mostrar un mensaje de error al usuario.
         const errorMessage =
-          err.error || 'Ocurrio un error inesperado. Intente nuevamente';
+          err.error || 'Ocurrió un error inesperado. Intente nuevamente.';
         alert(errorMessage);
       },
     });
