@@ -34,9 +34,13 @@ export class AuthService {
    * @param userData - Formulario con los datos del usuario para el registro.
    * @returns Observable con la respuesta de la API.
    */
-  register(userData: FormData): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, userData);
+  register(userData: { Email: string; Password: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, userData, {
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
+
+
 
   /**
    * Cierra sesión del usuario actual eliminando el token de autenticación almacenado.

@@ -1,0 +1,43 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #007bff; /* Fondo azul */
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 15px; /* Espaciado entre botones */
+}
+
+.nav-buttons button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.nav-buttons button:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.login {
+  background-color: #28a745;
+}
+
+.register {
+  background-color: #007bff;
+}
+
+.clients {
+  background-color: #d63384;
+}
+
+.orders {
+  background-color: #6f42c1;
+}

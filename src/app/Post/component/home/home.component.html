@@ -1,0 +1,41 @@
+<div class="flex justify-between items-center bg-blue-500 p-4 text-white">
+
+  <div class="flex space-x-4">
+    <!-- Botón de Login -->
+    <button
+      *ngIf="!isAuthenticated"
+      (click)="navigateTo('/login')"
+      class="px-4 py-2 bg-green-600 rounded hover:bg-green-700"
+    >
+      Login
+    </button>
+
+    <!-- Botón de Register -->
+    <button
+      *ngIf="!isAuthenticated"
+      (click)="navigateTo('/register')"
+      class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-700"
+    >
+      Register
+    </button>
+
+    <!-- Botón de Ver Posts -->
+    <button
+      *ngIf="!isAuthenticated"
+      (click)="navigateTo('/post')"
+      class="px-4 py-2 bg-red-600 rounded hover:bg-purple-700"
+    >
+      Ver Posts
+    </button>
+
+    <!-- Botón de Crear Posts -->
+    <button
+      *ngIf="!isAuthenticated"
+      (click)="navigateTo('/post/create')"
+      class="px-4 py-2 bg-purple-600 rounded hover:bg-purple-700"
+    >
+      Crear Posts
+    </button>
+</div>
+
+

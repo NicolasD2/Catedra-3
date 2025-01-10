@@ -25,6 +25,12 @@ export class LoginComponent {
   Password = '';
 
   /**
+   * Mensaje de error para credenciales inválidas.
+   * @type {string | null}
+   */
+  errorMessage: string | null = null;
+
+  /**
    * Constructor que inyecta el servicio de autenticación y el router.
    * @param authService Servicio de autenticación para manejar el login.
    * @param router Router para la navegación entre páginas.
@@ -33,19 +39,17 @@ export class LoginComponent {
 
   /**
    * Método para manejar el inicio de sesión.
-   * Valida el email y la contraseña, llama al servicio de autenticación,
-   * y redirige al usuario según su rol (cliente o administrador).
    */
   login(): void {
     // Validar que el email tenga un formato correcto.
     if (!this.Email || !this.Email.includes('@')) {
-      alert('Por favor, ingrese un email válido.');
+      this.errorMessage = 'Por favor, ingrese un email válido.';
       return;
     }
 
     // Validar que la contraseña tenga entre 8 y 20 caracteres.
-    if (!this.Password || this.Password.length < 8 || this.Password.length > 20) {
-      alert('La contraseña debe tener entre 8 y 20 caracteres.');
+    if (!this.Password || this.Password.length < 6) {
+      this.errorMessage = 'La contraseña debe tener entre 6 caracteres.';
       return;
     }
 
@@ -57,40 +61,21 @@ export class LoginComponent {
 
     // Llamar al servicio de autenticación.
     this.authService.login(loginData).subscribe({
-      /**
-       * Manejo del caso exitoso.
-       * @param response Respuesta del backend con el token de autenticación.
-       */
       next: (response) => {
         console.log('Inicio de sesión exitoso:', response);
 
         // Almacenar el token en localStorage.
         localStorage.setItem('token', response.Token);
 
-        // Almacenar el email en localStorage.
-        localStorage.setItem('email', this.Email);
-
-        // Verificar si el usuario es administrador según su email.
-        const isAdmin = this.Email.endsWith('@idwm.cl');
-
-        // Redirigir según el rol del usuario.
-        if (isAdmin) {
-          this.router.navigate(['/post']); // Página de inicio para administradores.
-        } else {
-          this.router.navigate(['/post']); // Página de inicio para clientes.
-        }
+        // Redirigir al usuario a la página de inicio.
+        this.router.navigate(['/post']);
       },
-      /**
-       * Manejo del caso de error.
-       * @param err Objeto de error recibido desde el backend.
-       */
       error: (err) => {
         console.error('Error al iniciar sesión:', err);
 
-        // Mostrar un mensaje de error al usuario.
-        const errorMessage =
-          err.error || 'Ocurrió un error inesperado. Intente nuevamente.';
-        alert(errorMessage);
+        // Mostrar mensaje de error y limpiar solo el campo de contraseña.
+        this.errorMessage = 'Credenciales inválidas';
+        this.Password = ''; // Limpia el campo de contraseña
       },
     });
   }

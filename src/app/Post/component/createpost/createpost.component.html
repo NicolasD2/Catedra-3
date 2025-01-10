@@ -1,0 +1,31 @@
+<div class="container mx-auto">
+  <h2 class="text-xl font-bold">Crear un nuevo post</h2>
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+      <label for="title" class="block">Título:</label>
+      <input
+        id="title"
+        type="text"
+        formControlName="title"
+        class="form-input"
+        [class.border-red-500]="postForm.get('title')?.invalid && postForm.get('title')?.touched"
+      />
+      <small *ngIf="postForm.get('title')?.invalid && postForm.get('title')?.touched" class="text-red-500">
+        El título debe tener al menos 5 caracteres.
+      </small>
+    </div>
+    <div class="mb-4">
+      <label for="image" class="block">Imagen:</label>
+      <input id="image" type="file" (change)="onImageSelected($event)" class="form-input" />
+      <small *ngIf="!postForm.get('image')?.value && postForm.get('image')?.touched" class="text-red-500">
+        Debes seleccionar una imagen.
+      </small>
+    </div>
+    <div class="mb-4">
+      <img *ngIf="imagePreview" [src]="imagePreview" class="h-48 w-auto" alt="Vista previa" />
+    </div>
+    <button type="submit" [disabled]="postForm.invalid" class="btn btn-primary">
+      Crear Post
+    </button>
+  </form>
+</div>
