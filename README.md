@@ -1,4 +1,4 @@
-# TallerIDWMFrontendWeb
+# PostFrontend
 
 Este proyecto de Angular fue generado utilizando [Angular CLI](https://github.com/angular/angular-cli) versión 19.0.6. Aquí encontrarás instrucciones para configurar y ejecutar la aplicación que ya ha sido creada y configurada previamente.
 
