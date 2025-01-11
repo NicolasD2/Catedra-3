@@ -18,10 +18,10 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   if (token) {
     // Si hay un token, permitir el acceso
-    router.navigate(['/home'])
     return true;
   } else {
     // Si no hay token, redirigir a la página de inicio de sesión
+    alert('Debe iniciar sesion');
     router.navigate(['/login']);
     return false;
   }

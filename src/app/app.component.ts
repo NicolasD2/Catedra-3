@@ -39,10 +39,6 @@ export class AppComponent implements OnInit {
 
   }
 
-
-
-
-
   navigateTo(path: string): void {
     this.router.navigate([path]);
   }

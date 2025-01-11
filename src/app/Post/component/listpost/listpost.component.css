@@ -1,0 +1,67 @@
+/* Contenedor principal del formulario */
+.post-container {
+  background-color: #007bff; /* Fondo azul */
+  padding: 20px 50px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto; /* Centrado */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del formulario */
+.post-container h2 {
+  font-size: 30px;
+  color: #ffffff; /* Blanco */
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Grupos de campos del formulario */
+.post-form .form-group {
+  margin-bottom: 20px;
+}
+
+/* Estilo para las etiquetas */
+.post-form label {
+  font-size: 20px;
+  color: #f1f1f1; /* Blanco claro */
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Estilo para los inputs */
+.post-form input {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Botón de Publicar */
+.post-form button.btn {
+  width: 100%;
+  background-color: #0056b3; /* Azul oscuro */
+  color: white;
+  padding: 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Hover del botón */
+.post-form button.btn:hover {
+  background-color: #004080;
+}
+
+/* Vista previa de la imagen */
+.image-preview img {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

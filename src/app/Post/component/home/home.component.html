@@ -22,7 +22,7 @@
     <!-- Botón de Ver Posts -->
     <button
       *ngIf="!isAuthenticated"
-      (click)="navigateTo('/post')"
+      (click)="navigateTo('/Post')"
       class="px-4 py-2 bg-red-600 rounded hover:bg-purple-700"
     >
       Ver Posts
@@ -31,7 +31,7 @@
     <!-- Botón de Crear Posts -->
     <button
       *ngIf="!isAuthenticated"
-      (click)="navigateTo('/post/create')"
+      (click)="navigateTo('/Post/upload')"
       class="px-4 py-2 bg-purple-600 rounded hover:bg-purple-700"
     >
       Crear Posts

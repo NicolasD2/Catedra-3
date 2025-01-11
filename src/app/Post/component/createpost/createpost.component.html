@@ -1,31 +1,37 @@
-<div class="container mx-auto">
-  <h2 class="text-xl font-bold">Crear un nuevo post</h2>
-  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
-    <div class="mb-4">
-      <label for="title" class="block">Título:</label>
+<div class="post-container">
+  <h2>Crear un nuevo post</h2>
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="post-form">
+    <!-- Campo de Título -->
+    <div class="form-group">
+      <label for="tittle">Título:</label>
       <input
-        id="title"
+        id="tittle"
         type="text"
-        formControlName="title"
-        class="form-input"
-        [class.border-red-500]="postForm.get('title')?.invalid && postForm.get('title')?.touched"
+        formControlName="tittle"
+        class="form-control"
+        [class.invalid]="postForm.get('tittle')?.invalid && postForm.get('tittle')?.touched"
       />
-      <small *ngIf="postForm.get('title')?.invalid && postForm.get('title')?.touched" class="text-red-500">
-        El título debe tener al menos 5 caracteres.
-      </small>
+      <div *ngIf="postForm.get('tittle')?.invalid && postForm.get('tittle')?.touched">
+        <small *ngIf="postForm.get('tittle')?.errors?.['required']">El título es obligatorio.</small>
+        <small *ngIf="postForm.get('tittle')?.errors?.['minlength']">El título debe tener al menos 5 caracteres.</small>
+      </div>
     </div>
-    <div class="mb-4">
-      <label for="image" class="block">Imagen:</label>
-      <input id="image" type="file" (change)="onImageSelected($event)" class="form-input" />
-      <small *ngIf="!postForm.get('image')?.value && postForm.get('image')?.touched" class="text-red-500">
-        Debes seleccionar una imagen.
-      </small>
+
+    <!-- Campo de Imagen -->
+    <div class="form-group">
+      <label for="image">Imagen:</label>
+      <input id="image" type="file" (change)="onImageSelected($event)" class="form-control" />
+      <div *ngIf="!postForm.get('image')?.value && postForm.get('image')?.touched">
+        <small>Debes seleccionar una imagen.</small>
+      </div>
     </div>
-    <div class="mb-4">
-      <img *ngIf="imagePreview" [src]="imagePreview" class="h-48 w-auto" alt="Vista previa" />
+
+    <!-- Vista previa de la imagen -->
+    <div class="image-preview" *ngIf="imagePreview">
+      <img [src]="imagePreview" alt="Vista previa de la imagen" />
     </div>
-    <button type="submit" [disabled]="postForm.invalid" class="btn btn-primary">
-      Crear Post
-    </button>
+
+    <!-- Botón Crear Post -->
+    <button type="submit" [disabled]="postForm.invalid" class="btn">Crear Post</button>
   </form>
 </div>

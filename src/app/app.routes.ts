@@ -10,8 +10,8 @@ export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
   {path: 'home', component: HomeComponent},
   {path: 'login',component: LoginComponent }, // Página de registro
-  {path: 'listposts',component: ListPostComponent,canActivate: [authGuard],},
+  {path: 'Post',component: ListPostComponent,canActivate: [authGuard],},
   {path: 'register',component: RegisterComponent},
-  {path:'posts/create', component: CreatepostComponent}
+  {path:'Post/upload', component: CreatepostComponent}
 ];
 

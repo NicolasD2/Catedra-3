@@ -5,11 +5,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PosthomeService {
-  private apiUrl= 'http://localhost:5296/api/Post'
+  private apiUrl= 'http://localhost:5296/Post'
   constructor(private http: HttpClient) { }
 
-  createPost(postData: FormData): Observable<any> {
-    return this.http.post(`${this.apiUrl}/upload`, postData);
+  createPost(formData: FormData): Observable<any> {
+    return this.http.post(`${this.apiUrl}/upload`, formData);
   }
 
   getPosts(): Observable<any[]> {

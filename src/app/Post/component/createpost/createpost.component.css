@@ -1,0 +1,70 @@
+/* Contenedor principal */
+.post-container {
+  background-color: #007bff; /* Fondo azul */
+  padding: 20px 50px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto; /* Centrado */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.post-container h2 {
+  font-size: 30px;
+  color: #ffffff; /* Blanco */
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Estilo para los grupos de formulario */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 20px;
+  color: #f1f1f1; /* Blanco claro */
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Input del formulario */
+.form-control {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Input con error */
+.form-control.invalid {
+  border: 2px solid #ff0000; /* Rojo para inputs inválidos */
+}
+
+/* Vista previa de la imagen */
+.image-preview img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+/* Botón */
+.btn {
+  width: 100%;
+  background-color: #0056b3; /* Azul oscuro */
+  color: white;
+  padding: 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Hover del botón */
+.btn:hover {
+  background-color: #004080;
+}

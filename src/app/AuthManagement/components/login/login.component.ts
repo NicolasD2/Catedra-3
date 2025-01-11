@@ -68,7 +68,7 @@ export class LoginComponent {
         localStorage.setItem('token', response.Token);
 
         // Redirigir al usuario a la página de inicio.
-        this.router.navigate(['/post']);
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         console.error('Error al iniciar sesión:', err);

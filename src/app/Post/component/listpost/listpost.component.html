@@ -1,15 +1,14 @@
-<div class="container mx-auto">
-  <h2 class="text-xl font-bold">Lista de Posts</h2>
-  <div *ngIf="posts.length === 0" class="text-gray-500">
-    No hay posts disponibles.
+<div class="post-container">
+  <h2>Lista de Publicaciones</h2>
+
+  <!-- Lista de Publicaciones -->
+  <div *ngIf="posts.length === 0" class="no-posts">
+    No hay publicaciones disponibles.
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div *ngFor="let post of posts" class="card">
-      <img [src]="post.imageUrl" alt="Post Image" class="card-img" />
-      <div class="card-body">
-        <h3 class="card-title">{{ post.title }}</h3>
-        <p class="card-text">Publicado el: {{ post.date | date: 'dd/MM/yyyy HH:mm' }}</p>
-      </div>
-    </div>
+
+  <div *ngFor="let post of posts" class="post-item">
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.content }}</p>
+    <img *ngIf="post.imageUrl" [src]="post.imageUrl" alt="Imagen de publicación" />
   </div>
 </div>

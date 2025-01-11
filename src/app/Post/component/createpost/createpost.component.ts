@@ -18,6 +18,7 @@ export class CreatepostComponent {
     this.postForm = this.formB.group({
       tittle: ['', [Validators.required, Validators.minLength(5)]],
       image: [null, Validators.required],
+
     });
   }
   onImageSelected(event:Event){
@@ -34,17 +35,20 @@ export class CreatepostComponent {
   onSubmit() {
     if (this.postForm.valid) {
       const formData = new FormData();
-      formData.append('title', this.postForm.value.title);
-      formData.append('image', this.postForm.value.image);
+      formData.append('file', this.postForm.get('image')?.value);
 
       this.postHomeService.createPost(formData).subscribe(
-        () => {
+        (response) => {
           alert('Post creado exitosamente');
+          this.postForm.reset();
+          this.imagePreview = null;
         },
         (error) => {
           alert(`Error al crear el post: ${error.message}`);
         }
       );
+    } else {
+      alert('Por favor, corrige los errores en el formulario.');
     }
   }
 }
